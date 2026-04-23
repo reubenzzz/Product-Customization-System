@@ -215,25 +215,43 @@ function App() {
         </div>
       )}
 
-      <div className="gallery">
-        {products.map(prod => (
-          prod.views.map(view => {
-            const state = mockups[view.id];
-            if (!state) return null;
+      <div className="product-groups">
+        {products.map(prod => {
+          // Determine the custom heading based on the product name
+          let heading = prod.name;
+          if (prod.name === 'Ceramic Coffee Mug') heading = 'CUP';
+          if (prod.name === 'Baseball Cap') heading = 'CAP';
+          if (prod.name === 'Classic T-Shirt') heading = 'T Shirt Front and Back';
+          if (prod.name === 'Premium Hoodie') heading = 'Hoodie Front and Back';
 
-            return (
-              <div key={view.id} className="product-card" onClick={() => state.status === 'success' && setLightboxImage(state.url)}>
-                <h3>{prod.name} - {view.name}</h3>
-                <div className="image-container">
-                  {state.status === 'idle' && <img src={`${API_BASE}${state.baseImage}`} alt={prod.name} style={{ opacity: 0.5 }} />}
-                  {state.status === 'loading' && <div className="loader"></div>}
-                  {state.status === 'success' && <img src={state.url} alt={`Mockup for ${prod.name}`} />}
-                  {state.status === 'error' && <p>Error rendering.</p>}
-                </div>
+          // Check if any view inside this product exists in mockups to decide if we render
+          const hasViews = prod.views.some(view => mockups[view.id]);
+          if (!hasViews) return null;
+
+          return (
+            <div key={prod.id} className="product-group-tile">
+              <h2>{heading}</h2>
+              <div className="gallery">
+                {prod.views.map(view => {
+                  const state = mockups[view.id];
+                  if (!state) return null;
+
+                  return (
+                    <div key={view.id} className="product-card" onClick={() => state.status === 'success' && setLightboxImage(state.url)}>
+                      <h3>{view.name} View</h3>
+                      <div className="image-container">
+                        {state.status === 'idle' && <img src={`${API_BASE}${state.baseImage}`} alt={prod.name} style={{ opacity: 0.5 }} />}
+                        {state.status === 'loading' && <div className="loader"></div>}
+                        {state.status === 'success' && <img src={state.url} alt={`Mockup for ${prod.name}`} />}
+                        {state.status === 'error' && <p>Error rendering.</p>}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })
-        ))}
+            </div>
+          );
+        })}
       </div>
 
       {lightboxImage && (
