@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { UploadCloud, Download, X, Moon, Sun } from 'lucide-react';
 import './index.css';
 
+const API_BASE = 'http://127.0.0.1:8000';
 const API_BASE = 'https://highproduct-customization-system.onrender.com';
+
 function App() {
   const [products, setProducts] = useState([]);
   const [mockups, setMockups] = useState({});
