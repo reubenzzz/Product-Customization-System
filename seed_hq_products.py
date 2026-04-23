@@ -7,6 +7,7 @@ django.setup()
 
 from products.models import Product, ProductView, PrintArea
 from django.core.files.base import ContentFile
+from django.conf import settings
 
 def seed_db():
     # Clear existing data
@@ -16,25 +17,25 @@ def seed_db():
     products_data = [
         {
             'name': 'Ceramic Coffee Mug',
-            'image_path': r'C:\Users\user\.gemini\antigravity\brain\198d66e4-d7ae-4df6-a385-6fc062e9e61d\hq_mug_1776926908319.png',
+            'image_path': os.path.join(settings.BASE_DIR, 'media', 'products', 'base_images', 'hq_mug.png'),
             'filename': 'hq_mug.png',
             'print_area': {'tl_x': 300, 'tl_y': 300, 'tr_x': 700, 'tr_y': 300, 'br_x': 700, 'br_y': 700, 'bl_x': 300, 'bl_y': 700}
         },
         {
             'name': 'Premium Hoodie',
-            'image_path': r'C:\Users\user\.gemini\antigravity\brain\198d66e4-d7ae-4df6-a385-6fc062e9e61d\hq_hoodie_1776926940255.png',
+            'image_path': os.path.join(settings.BASE_DIR, 'media', 'products', 'base_images', 'hq_hoodie.png'),
             'filename': 'hq_hoodie.png',
             'print_area': {'tl_x': 350, 'tl_y': 300, 'tr_x': 650, 'tr_y': 300, 'br_x': 650, 'br_y': 600, 'bl_x': 350, 'bl_y': 600}
         },
         {
             'name': 'Classic T-Shirt',
-            'image_path': r'C:\Users\user\.gemini\antigravity\brain\198d66e4-d7ae-4df6-a385-6fc062e9e61d\hq_tshirt_1776926963266.png',
+            'image_path': os.path.join(settings.BASE_DIR, 'media', 'products', 'base_images', 'hq_tshirt.png'),
             'filename': 'hq_tshirt.png',
             'print_area': {'tl_x': 350, 'tl_y': 300, 'tr_x': 650, 'tr_y': 300, 'br_x': 650, 'br_y': 600, 'bl_x': 350, 'bl_y': 600}
         },
         {
             'name': 'Baseball Cap',
-            'image_path': r'C:\Users\user\.gemini\antigravity\brain\198d66e4-d7ae-4df6-a385-6fc062e9e61d\hq_cap_1776926998578.png',
+            'image_path': os.path.join(settings.BASE_DIR, 'media', 'products', 'base_images', 'hq_cap.png'),
             'filename': 'hq_cap.png',
             'print_area': {'tl_x': 400, 'tl_y': 400, 'tr_x': 600, 'tr_y': 400, 'br_x': 600, 'br_y': 500, 'bl_x': 400, 'bl_y': 500}
         }
