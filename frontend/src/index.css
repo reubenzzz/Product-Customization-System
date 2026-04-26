@@ -93,20 +93,21 @@ h1, h2, h3 { font-weight: 600; }
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  padding: 2.5rem;
+  padding: 1.5rem;
 }
 
 .product-group-tile h2 {
   color: var(--primary);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   letter-spacing: 1px;
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+  justify-content: center;
   gap: 2rem;
 }
 

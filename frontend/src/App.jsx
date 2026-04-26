@@ -240,7 +240,7 @@ function App() {
                     <div key={view.id} className="product-card" onClick={() => state.status === 'success' && setLightboxImage(state.url)}>
                       <h3>{view.name} View</h3>
                       <div className="image-container">
-                        {state.status === 'idle' && <img src={`${API_BASE}${state.baseImage}`} alt={prod.name} style={{ opacity: 0.5 }} />}
+                        {state.status === 'idle' && <img src={state.baseImage.startsWith('http') ? state.baseImage : `${API_BASE}${state.baseImage}`} alt={prod.name} style={{ opacity: 0.5 }} />}
                         {state.status === 'loading' && <div className="loader"></div>}
                         {state.status === 'success' && <img src={state.url} alt={`Mockup for ${prod.name}`} />}
                         {state.status === 'error' && <p>Error rendering.</p>}
