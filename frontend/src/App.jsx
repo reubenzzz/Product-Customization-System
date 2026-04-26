@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { UploadCloud, Download, X, Moon, Sun } from 'lucide-react';
 import './index.css';
 
-const API_BASE = 'https://highproduct-customization-system.onrender.com';
+const API_BASE = 'https://product-customization-system.vercel.app';
 
 function App() {
   const [products, setProducts] = useState([]);
